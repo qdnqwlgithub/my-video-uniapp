@@ -90,8 +90,9 @@
 				// 这里就是数据加载完以后再向后端发送数据的地方
 				this.page++;
 				uni.request({
-					url: 'https://bdb24c6d-8c19-4f80-8e7e-c9c9f037f131.bspapp.com/video',
-					method: 'POST',
+					url: `http://ylgy.qfxwl.com/api/Advassets/pageList?page=${this.page}&page_size=15`,
+					// url: 'https://bdb24c6d-8c19-4f80-8e7e-c9c9f037f131.bspapp.com/video',
+					method: 'GET',
 					data:{
 						info: 'get_video'
 					},
@@ -104,16 +105,35 @@
 				})
 			},
 			get(){
+			  this.page=1;
 				uni.request({
-					url: 'https://bdb24c6d-8c19-4f80-8e7e-c9c9f037f131.bspapp.com/video',
-					method: 'POST',
-					data:{
-						info: 'get_video'
-					},
+					url: 'http://ylgy.qfxwl.com/api/Advassets/pageList?page=1&page_size=15',
+					// url: 'https://bdb24c6d-8c19-4f80-8e7e-c9c9f037f131.bspapp.com/video',
+          // method: 'POST',
+					method: 'GET',
 					success: (res) => {
 						var msg = res.data.data
+            for (let msgElement of msg) {
+              // todo
+              msgElement._id=msgElement.id;
+              msgElement.username='阿水的哈';
+              msgElement.href=msgElement.cover;
+              msgElement.title='undefined title';
+              msgElement.msg='undefined msg';
+              msgElement.state='pause';
+              msgElement.like=0;
+              msgElement.like_n=0;
+              msgElement.sms_n=0;
+              msgElement.src=msgElement.url;
+              msgElement.playNumber=0;
+              msgElement.playIng=false;
+              msgElement.isShowimage=false;
+              msgElement.isShowProgressBarTime=false;
+              msgElement.true=false;
+              msgElement.abcdefghijklmn67891='undefined userid';
+            }
 						// console.log(msg)
-						this.dataList = msg
+						this.dataList=msg;
 					}
 				})
 			}
@@ -131,5 +151,4 @@
 		margin-top: 40upx; 
 		margin-left: 5upx;
 	}
-
 </style>
