@@ -1,18 +1,8 @@
 <template>
 	<view>
+    <view class="back-button" @click="goBack">返回</view>
 		<!-- 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
+
 		注意：这是 H5、微信小程序界面，请勿和 new_index.nvue、index.nvue 混用
 		 
 		1. new_index.nvue、index.nvue这两个是App页面
@@ -21,16 +11,8 @@
 		 
 		3. 请各位大神多多留手，我已经把请求内存开到最大了
 		 
-		4. 视频 id 切记是字符串类型 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
+		4. 视频 id 切记是字符串类型
+
 		 -->
 		 <view @click="autoPlay" style="position: fixed; margin-top: 100upx; right: 40upx;">
 		 	<text style="padding: 10upx; padding-left: 40upx; padding-right: 40upx; border-radius: 20upx; background-color: #F8F8F8; color: #007AFF; font-weight: bold; font-size: 14px;">{{autoplayText}}</text>
@@ -353,7 +335,13 @@
 				this.dataList[this.k].like = !this.dataList[this.k].like
 				const video = this.dataList[this.k];
 				sss?video.like_n -= 1:video.like_n += 1;
-			}
+			},
+      goBack(){
+        uni.navigateTo({
+          url: '/pages/wxh5previewVideo/wxh5previewVideo'
+        })
+
+      }
 		}
 	}
 </script>
@@ -439,4 +427,15 @@
 	.root{
 		background-color: #000000;
 	}
+
+  .back-button{
+    position: fixed;
+    right: 20upx;
+    top: 20rpx;
+    color: white;
+    z-index: 9999;
+    background-color: rgba(66, 63, 63,0.4);
+    padding: 10upx 30upx;
+    border-radius: 30upx;
+  }
 </style>

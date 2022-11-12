@@ -13,6 +13,7 @@
       }
     },
     {
+      //       pages/wxh5previewVideo/wxh5infoVideo/wxh5infoVideo
       "path": "pages/wxh5previewVideo/wxh5infoVideo/wxh5infoVideo",
       "style": {
         "app-plus": {

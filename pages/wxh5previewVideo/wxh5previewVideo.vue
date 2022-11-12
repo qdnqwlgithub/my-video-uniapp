@@ -99,8 +99,11 @@ export default {
       console.log('\n\n第一个视频下标：' + beforeLocation + '.\n' + '最后一个视频下标：' + afterLocation + '.\n\n');
       uni.setStorageSync("List", this.dataList);
       uni.setStorageSync("dataList", list);
+      // uni.navigateTo({
+      //   url: './wxh5infoVideo/wxh5infoVideo?option=' + location + '&page=' + this.page + '&index=' + index,
+      // })
       uni.navigateTo({
-        url: './wxh5infoVideo/wxh5infoVideo?option=' + location + '&page=' + this.page + '&index=' + index,
+        url: '/pages/wxh5previewVideo/wxh5infoVideo/wxh5infoVideo?option=' + location + '&page=' + this.page + '&index=' + index,
       })
     },
     scrolltolower() {
@@ -159,11 +162,6 @@ export default {
 </script>
 
 <style>
-.test{
-  font-family: iconfont;
-}
-
-
 .my-parent {
   display: flex;
   flex-direction: row;
