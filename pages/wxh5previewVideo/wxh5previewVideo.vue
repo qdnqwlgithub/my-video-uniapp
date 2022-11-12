@@ -183,6 +183,7 @@ export default {
   /*width: 100%;*/
   position: relative;
   border-radius: 12upx;
+  overflow: hidden;
 }
 
 .my-parent .my-item .my-image{
