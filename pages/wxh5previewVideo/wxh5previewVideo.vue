@@ -1,10 +1,6 @@
-
-
-
-
 <template>
   <view>
-    <scroll-view :style="'width: 100%; height: '+ (windowHeight) +'px; '" :scroll-y="true"
+    <scroll-view :style="'width: 100%; height: '+ (windowHeight) +'px;padding-bottom: 30upx '" :scroll-y="true"
                  @scrolltolower="scrolltolower" :lower-threshold="lowerThreshold">
       <view class="my-parent">
         <block v-for="(list,index) in dataList">
@@ -12,6 +8,18 @@
           <view class="my-item">
             <image class="my-image" @click="towxh5Video(index)" :src="list.src+'?x-oss-process=video/snapshot,t_1000,f_jpg'"
                    mode="aspectFill" style="width: 100%; height: 100%;"></image>
+            <view class="my-top">
+              <view class="my-item1">
+                <image style="height: 27upx;width: 27upx" src="@/static/font/play.png"></image>
+                <text>完整回放</text>
+              </view>
+              <view class="my-item2">
+                <image style="height: 27upx;width: 27upx" src="@/static/font/share.png"></image>
+              </view>
+            </view>
+            <view class="my-bottom">
+              广东省老人LOL比赛直播，特约嘉宾李鲁媚
+            </view>
           </view>
         </block>
       </view>
@@ -31,11 +39,13 @@ export default {
     }
   },
   onLoad() {
+    //
     this.windowWidth = uni.getSystemInfoSync().windowWidth
     if (uni.getSystemInfoSync().platform == 'ios') {
       var model = uni.getSystemInfoSync().model
       if (model !== 'iPhone6' || model !== 'iPhone6s' || model !== 'iPhone7' || model !== 'iPhone8') {
-        this.windowHeight = (uni.getSystemInfoSync().screenHeight) - 125
+        // this.windowHeight = (uni.getSystemInfoSync().screenHeight) - 125
+        this.windowHeight = (uni.getSystemInfoSync().screenHeight);
       } else {
         this.windowHeight = uni.getSystemInfoSync().screenHeight
       }
@@ -43,6 +53,7 @@ export default {
       this.windowHeight = uni.getSystemInfoSync().screenHeight
     }
     this.get()
+    console.log(this.windowHeight)
   },
   methods: {
     towxh5Video(index) {
@@ -148,6 +159,11 @@ export default {
 </script>
 
 <style>
+.test{
+  font-family: iconfont;
+}
+
+
 .my-parent {
   display: flex;
   flex-direction: row;
@@ -163,7 +179,7 @@ export default {
   background-color: #000000;
   margin-top: 30upx;
   margin-left: 10upx;
-  padding-bottom: 56%;
+  padding-bottom: 80%;
   /*width: 100%;*/
   position: relative;
   border-radius: 12upx;
@@ -176,4 +192,53 @@ export default {
   top: 0;
   left: 0;
 }
+
+
+.my-parent .my-item .my-top{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 20upx;
+}
+
+.my-parent .my-item .my-top .my-item1{
+  background-color: rgba(66, 63, 63, 0.8);
+  height: 42upx;
+  display: flex;
+  font-size: 20upx;
+  align-items: center;
+  padding: 2upx 10upx;
+  border-radius: 18upx;
+}
+
+.my-parent .my-item .my-top .my-item2{
+  background-color: rgba(66, 63, 63, 0.8);
+  height: 42upx;
+  display: flex;
+  font-size: 20upx;
+  align-items: center;
+  padding: 5upx 10upx;
+  border-radius: 50%;
+  color: white;
+}
+
+
+
+
+.my-parent .my-item .my-bottom{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(66, 63, 63,0.2);
+  color: white;
+  padding: 10upx;
+}
+
+
+
 </style>
